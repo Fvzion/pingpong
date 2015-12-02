@@ -74,6 +74,10 @@
 			<BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
 		</PropertyGroup>
 		<ItemGroup>
+			<ResFiles Include="Project1.res">
+				<BuildOrder>2</BuildOrder>
+			</ResFiles>
+			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<CppCompile Include="Unit1.cpp">
 				<BuildOrder>8</BuildOrder>
 				<Form>Form1</Form>
@@ -84,11 +88,6 @@
 				<BuildOrder>5</BuildOrder>
 				<BuildOrder>1</BuildOrder>
 			</CppCompile>
-			<ResFiles Include="Project1.res">
-				<BuildOrder>2</BuildOrder>
-				<BuildOrder>2</BuildOrder>
-			</ResFiles>
-			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<FormResources Include="Unit1.dfm"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
@@ -168,7 +167,7 @@
 						<Source Name="MainSource">Project1.cpp</Source>
 					</Source>
 				</CPlusPlusBuilder.Personality>
-				<ModelSupport>Required</ModelSupport>
+				<ModelSupport>True</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>

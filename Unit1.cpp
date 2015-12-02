@@ -9,8 +9,8 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
-// Prêdkosc pilki
-int vx = 3, vy=3;
+// Velocidad de la pelota
+int vx = 5, vy=3;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -18,52 +18,56 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::ZegarDzwoni(TObject *Sender)
+void __fastcall TForm1::TimingMovimiento(TObject *Sender)
 {
-        // Musimy to trochê poprawic
-        if(Pilka->Left + vx < Problem1->Left + Problem1->Width) {
-                // Pilka odbija siê od paletki
-                if (Pilka->Top + Pilka->Height >= Problem1->Top &&
-                        Problem1->Top + Problem1->Height >= Pilka->Top)
+		if(Pelota->Left + vx < Cursor->Left + Cursor->Width) {
+				// If creado para hacer que rebote la pelota
+				if (Pelota->Top + Pelota->Height >= Cursor->Top &&
+						Cursor->Top + Cursor->Height >= Pelota->Top)
                         vx *= -1.5;
-                else { // Przegra³es
-                        static bool pokazano = false;
+				else {
+						static bool derrota = false;
 
-						if(!pokazano){
-                                pokazano = true;
-                                Timer1->Enabled = false;
+						if(!derrota){
+                                derrota = true;
+								Timer1->Enabled = false;
+								// Alerta cuando se pierde
 								MessageBox(NULL, "Demasiado lento!", "PERDISTE", MB_OK);
                         }
                 }
         }
 
-        if(Pilka->Left + vx + Pilka->Width > Problem2->Left)
+        if(Pelota->Left + vx + Pelota->Width > Pared->Left)
         {
                 vx *= -1;
         }
 
-        if(Pilka->Top + vy < Blokada1->Top + Blokada1->Height)
+        if(Pelota->Top + vy < Borde1->Top + Borde1->Height)
                 vy *= -1;
 
-        if(Pilka->Top + Pilka->Height + vy > Blokada2->Top)
+        if(Pelota->Top + Pelota->Height + vy > Borde2->Top)
                 vy *= -1;
 
-        Pilka->Left += vx;
-        Pilka->Top += vy;
+        Pelota->Left += vx;
+        Pelota->Top += vy;
 }
-void __fastcall TForm1::MyszkaRusza(TObject *Sender, TShiftState Shift,
+void __fastcall TForm1::MovimientoMouse(TObject *Sender, TShiftState Shift,
       int X, int Y)
 {
-		Problem1->Top = Y;
+		Cursor->Top = Y;
 
-        if(Problem1->Top < Blokada1->Top + Blokada1->Height)
-                Problem1->Top = Blokada1->Top + Blokada1->Height;
+        if(Cursor->Top < Borde1->Top + Borde1->Height)
+                Cursor->Top = Borde1->Top + Borde1->Height;
 
-        if(Problem1->Top + Problem1->Height > Blokada2->Top)
-                Problem1->Top = Blokada2->Top - Problem1->Height;  
+        if(Cursor->Top + Cursor->Height > Borde2->Top)
+                Cursor->Top = Borde2->Top - Cursor->Height;
 }
 
 //---------------------------------------------------------------------------
+
+
+
+
 
 
 

@@ -11,39 +11,42 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  OnMouseMove = MyszkaRusza
+  OnMouseMove = MovimientoMouse
   PixelsPerInch = 96
   TextHeight = 13
-  object Blokada1: TShape
+  object Borde1: TShape
     Left = 0
     Top = 56
     Width = 1041
-    Height = 49
+    Height = 42
   end
-  object Blokada2: TShape
+  object Borde2: TShape
     Left = -256
     Top = 584
     Width = 1297
     Height = 33
   end
-  object Pilka: TShape
-    Left = 568
-    Top = 152
+  object Pelota: TShape
+    Left = 776
+    Top = 136
     Width = 49
     Height = 49
     Shape = stCircle
   end
-  object Problem1: TShape
+  object Cursor: TShape
     Left = 0
     Top = 288
-    Width = 33
+    Width = 25
     Height = 113
+    OnMouseEnter = TimingMovimiento
+    OnMouseLeave = TimingMovimiento
+    OnMouseMove = MovimientoMouse
   end
-  object Problem2: TShape
+  object Pared: TShape
     Left = 1000
-    Top = 104
+    Top = 96
     Width = 41
-    Height = 481
+    Height = 489
   end
   object StaticText1: TStaticText
     Left = 376
@@ -51,7 +54,7 @@ object Form1: TForm1
     Width = 230
     Height = 50
     Caption = 'PING PONG'
-    Color = clHighlightText
+    Color = 65408
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -40
@@ -63,7 +66,7 @@ object Form1: TForm1
   end
   object Timer1: TTimer
     Interval = 1
-    OnTimer = ZegarDzwoni
+    OnTimer = TimingMovimiento
     Left = 184
     Top = 16
   end

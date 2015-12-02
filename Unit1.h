@@ -12,16 +12,18 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-        TShape *Blokada1;
-        TShape *Blokada2;
+	TShape *Borde1;
+	TShape *Borde2;
         TStaticText *StaticText1;
-        TShape *Pilka;
+	TShape *Pelota;
         TTimer *Timer1;
-        TShape *Problem1;
-        TShape *Problem2;
-        void __fastcall ZegarDzwoni(TObject *Sender);
-        void __fastcall MyszkaRusza(TObject *Sender, TShiftState Shift,
+	TShape *Cursor;
+	TShape *Pared;
+		void __fastcall TimingMovimiento(TObject *Sender);
+		void __fastcall MovimientoMouse(TObject *Sender, TShiftState Shift,
           int X, int Y);
+
+
 
 private:	// User declarations
 public:		// User declarations
